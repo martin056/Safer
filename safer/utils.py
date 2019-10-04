@@ -69,17 +69,17 @@ def ensure_faker_method(faker, faker_method):
 
 def handle_faker_duplicate(curr_result, faker, cache, method, *method_args, **method_kwargs):
     result = curr_result
-    max_iterrations = 100
-    iterration = 1
+    max_iterations = 100  # TODO: Allow controlling this via configuration.
+    iteration = 1
 
     with faker.insecure():
         while result in cache:
-            if iterration >= max_iterrations:
+            if iteration >= max_iterations:
                 raise CannotGenerateUniqueValueError(
                     f'{method.__name__} cannot generate new value for the current run.'
                 )
 
             result = method(*method_args, **method_kwargs)
-            iterration += 1
+            iteration += 1
 
     return result
