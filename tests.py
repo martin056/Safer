@@ -20,7 +20,7 @@ class ExampleTests(WithSafer, TestCase):
                     print(f'The exception was: {exc}')
                     break
 
-    def test_safer_works(self):
+    def test_safer_name_does_generates_unique_values(self):
         i = 1
         while True:
             self._safer.name()
